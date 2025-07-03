@@ -1,15 +1,15 @@
 # Define common tags for all resources
 locals {
   common_tags = {
-    Environment     = "production"
-    Project         = "secure-server"
-    Owner           = "cloud-engineering-team"
-    CostCenter      = "IT-001"
-    ManagedBy       = "terraform"
-    BackupPolicy    = "daily"
-    SecurityLevel   = "high"
-    Compliance      = "SOC2"
-    Version         = "1.0.0"
+    Environment   = "production"
+    Project       = "secure-server"
+    Owner         = "cloud-engineering-team"
+    CostCenter    = "IT-001"
+    ManagedBy     = "terraform"
+    BackupPolicy  = "daily"
+    SecurityLevel = "high"
+    Compliance    = "SOC2"
+    Version       = "1.0.0"
   }
 }
 

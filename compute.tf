@@ -9,7 +9,7 @@ resource "azurerm_network_interface" "bastion_nic" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.bastion.id
   }
-  
+
 }
 
 resource "azurerm_public_ip" "bastion" {
@@ -21,29 +21,29 @@ resource "azurerm_public_ip" "bastion" {
 }
 
 resource "azurerm_linux_virtual_machine" "bastion" {
-  name                = "bastion-vm"
-  resource_group_name = var.resource_group
-  location            = var.location
-  size                = "Standard_B1s"
-  admin_username      = var.admin_username
+  name                  = "bastion-vm"
+  resource_group_name   = var.resource_group
+  location              = var.location
+  size                  = "Standard_B1s"
+  admin_username        = var.admin_username
   network_interface_ids = [azurerm_network_interface.bastion_nic.id]
   admin_ssh_key {
     username   = var.admin_username
     public_key = var.ssh_public_key
   }
-  
+
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
-  
+
   source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
     sku       = "22_04-lts-gen2"
     version   = "latest"
   }
-  
+
 }
 
 resource "azurerm_network_interface" "app_nic" {
@@ -59,22 +59,22 @@ resource "azurerm_network_interface" "app_nic" {
 }
 
 resource "azurerm_linux_virtual_machine" "app" {
-  name                = "app-vm"
-  resource_group_name = var.resource_group
-  location            = var.location
-  size                = "Standard_B1s"
-  admin_username      = var.admin_username
+  name                  = "app-vm"
+  resource_group_name   = var.resource_group
+  location              = var.location
+  size                  = "Standard_B1s"
+  admin_username        = var.admin_username
   network_interface_ids = [azurerm_network_interface.app_nic.id]
   admin_ssh_key {
     username   = var.admin_username
     public_key = var.ssh_public_key
   }
-  
+
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
-  
+
   source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
@@ -84,6 +84,6 @@ resource "azurerm_linux_virtual_machine" "app" {
 }
 
 resource "azurerm_subnet_network_security_group_association" "private" {
-    subnet_id                 = azurerm_subnet.private.id
-    network_security_group_id = azurerm_network_security_group.app_nsg.id
+  subnet_id                 = azurerm_subnet.private.id
+  network_security_group_id = azurerm_network_security_group.app_nsg.id
 }

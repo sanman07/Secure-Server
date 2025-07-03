@@ -24,7 +24,7 @@ resource "azurerm_monitor_action_group" "main" {
 
   email_receiver {
     name                    = "admin"
-    email_address          = "admin@example.com"
+    email_address           = "admin@example.com"
     use_common_alert_schema = true
   }
 }
@@ -33,8 +33,8 @@ resource "azurerm_monitor_action_group" "main" {
 resource "azurerm_monitor_metric_alert" "vm_availability" {
   name                = "vm-availability-alert"
   resource_group_name = azurerm_resource_group.main.name
-  scopes               = [azurerm_linux_virtual_machine.bastion.id, azurerm_linux_virtual_machine.app.id]
-  description          = "Alert when VM is down"
+  scopes              = [azurerm_linux_virtual_machine.bastion.id, azurerm_linux_virtual_machine.app.id]
+  description         = "Alert when VM is down"
 
   criteria {
     metric_namespace = "Microsoft.Compute/virtualMachines"
