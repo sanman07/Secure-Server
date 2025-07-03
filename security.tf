@@ -50,13 +50,6 @@ resource "azurerm_security_center_setting" "main" {
   enabled      = true
 }
 
-# Advanced Threat Protection for VMs
-resource "azurerm_security_center_advanced_threat_protection" "main" {
-  target_resource_id = azurerm_linux_virtual_machine.bastion.id
-  enabled            = true
-}
-
-resource "azurerm_security_center_advanced_threat_protection" "app" {
-  target_resource_id = azurerm_linux_virtual_machine.app.id
-  enabled            = true
-} 
+# The following resources are no longer supported and have been removed:
+# resource "azurerm_security_center_advanced_threat_protection" "main" { ... }
+# resource "azurerm_security_center_advanced_threat_protection" "app" { ... } 

@@ -7,7 +7,7 @@ variable "location" {
 variable "subscription_id" {
   description = "The Azure subscription ID where resources will be created."
   type        = string
-  default     = "f0ad147f-14df-4773-a0a4-e83aba078cb1" # Replace with your actual subscription ID
+  default     = "dde349b6-e516-4976-bc8d-4e4036bd454d" # Replace with your actual subscription ID
   
 }
 

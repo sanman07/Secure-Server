@@ -1,9 +1,9 @@
-# Azure Backup Vault
-resource "azurerm_backup_vault" "main" {
+# Azure Recovery Services Vault
+resource "azurerm_recovery_services_vault" "main" {
   name                = "secure-server-backup-vault"
-  resource_group_name = azurerm_resource_group.main.name
   location            = var.location
-  storage_mode_type   = "GeoRedundant"
+  resource_group_name = azurerm_resource_group.main.name
+  sku                 = "Standard"
   soft_delete_enabled = true
 }
 
@@ -11,7 +11,7 @@ resource "azurerm_backup_vault" "main" {
 resource "azurerm_backup_policy_vm" "main" {
   name                = "secure-server-backup-policy"
   resource_group_name = azurerm_resource_group.main.name
-  recovery_vault_name = azurerm_backup_vault.main.name
+  recovery_vault_name = azurerm_recovery_services_vault.main.name
 
   backup {
     frequency = "Daily"
@@ -37,14 +37,14 @@ resource "azurerm_backup_policy_vm" "main" {
 # Backup Protection for VMs
 resource "azurerm_backup_protected_vm" "bastion" {
   resource_group_name = azurerm_resource_group.main.name
-  recovery_vault_name = azurerm_backup_vault.main.name
+  recovery_vault_name = azurerm_recovery_services_vault.main.name
   source_vm_id        = azurerm_linux_virtual_machine.bastion.id
   backup_policy_id    = azurerm_backup_policy_vm.main.id
 }
 
 resource "azurerm_backup_protected_vm" "app" {
   resource_group_name = azurerm_resource_group.main.name
-  recovery_vault_name = azurerm_backup_vault.main.name
+  recovery_vault_name = azurerm_recovery_services_vault.main.name
   source_vm_id        = azurerm_linux_virtual_machine.app.id
   backup_policy_id    = azurerm_backup_policy_vm.main.id
 } 

@@ -20,7 +20,7 @@ resource "azurerm_application_insights" "main" {
 resource "azurerm_monitor_action_group" "main" {
   name                = "secure-server-alerts"
   resource_group_name = azurerm_resource_group.main.name
-  short_name          = "secure-alerts"
+  short_name          = "alerts"
 
   email_receiver {
     name                    = "admin"
