@@ -6,7 +6,6 @@ resource "azurerm_mysql_flexible_server" "main" {
   administrator_password = "MySecurePass123!"
   sku_name               = "B_Standard_B1ms"
   version                = "5.7"
-  zone                   = "1"
 }
 
 resource "azurerm_mysql_flexible_database" "main" {
