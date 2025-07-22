@@ -45,7 +45,7 @@ resource "azurerm_network_security_group" "bastion_nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_ranges    = ["22"]
-    source_address_prefixes    = ["128.250.0.109/32"] # Updated to current IP
+    source_address_prefixes    = ["128.250.0.221/32"] # Updated to current IP
     destination_address_prefix = "*"
   }
 

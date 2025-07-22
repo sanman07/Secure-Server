@@ -35,6 +35,8 @@ resource "azurerm_monitor_metric_alert" "vm_availability" {
   resource_group_name = azurerm_resource_group.main.name
   scopes              = [azurerm_linux_virtual_machine.bastion.id, azurerm_linux_virtual_machine.app.id]
   description         = "Alert when VM is down"
+  target_resource_type     = "Microsoft.Compute/virtualMachines"
+  target_resource_location = var.location
 
   criteria {
     metric_namespace = "Microsoft.Compute/virtualMachines"

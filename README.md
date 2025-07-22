@@ -60,6 +60,7 @@ Internet
 - Azure CLI installed and authenticated
 - Terraform >= 1.0.0
 - SSH key pair
+- **Before running `terraform apply`, see the [Providing Sensitive and Required Variables](#-providing-sensitive-and-required-variables) section below to supply your own credentials and secrets.**
 
 ### **Deployment**
 ```bash
@@ -74,6 +75,7 @@ terraform init
 terraform plan
 
 # Apply the infrastructure
+# ⚠️ Make sure you have provided all required variables as described in the [Providing Sensitive and Required Variables](#-providing-sensitive-and-required-variables) section.
 terraform apply
 ```
 
@@ -183,6 +185,45 @@ ssh adminuser@10.0.2.4
 ## 📄 **License**
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🔑 Providing Sensitive and Required Variables
+
+Some variables (such as `db_admin_password`, `subscription_id`, and `ssh_public_key`) are required and should be provided securely. You can supply them in one of the following ways:
+
+### 1. Using the CLI
+
+Pass variables directly when running Terraform:
+```sh
+terraform apply \
+  -var="db_admin_password=YOUR_DB_PASSWORD" \
+  -var="subscription_id=YOUR_SUBSCRIPTION_ID" \
+  -var="ssh_public_key=YOUR_PUBLIC_KEY"
+```
+
+### 2. Using a `.tfvars` File
+
+Create a file named `terraform.tfvars` (which is gitignored by default):
+```hcl
+db_admin_password   = "YOUR_DB_PASSWORD"
+subscription_id     = "YOUR_SUBSCRIPTION_ID"
+ssh_public_key      = "YOUR_PUBLIC_KEY"
+```
+Then run:
+```sh
+terraform apply
+```
+
+### 3. Using Environment Variables
+
+Terraform will automatically pick up variables set as environment variables with the `TF_VAR_` prefix:
+```sh
+export TF_VAR_db_admin_password=YOUR_DB_PASSWORD
+export TF_VAR_subscription_id=YOUR_SUBSCRIPTION_ID
+export TF_VAR_ssh_public_key=YOUR_PUBLIC_KEY
+terraform apply
+```
+
+**Never commit sensitive values or `.tfvars` files to version control.**
 
 ## 🏆 **Cloud Engineering Skills Demonstrated**
 

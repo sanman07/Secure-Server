@@ -27,6 +27,12 @@ variable "admin_username" {
 variable "ssh_public_key" {
   description = "The SSH public key for secure access to the virtual machine."
   type        = string
-  default     = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCzV/a89HTJDrt8W7Z4AdeBJNliQYkvMY1po+Nrjc0pjUNyUv2+ljGxsn49XgP4K/uwmzdDmsyFoow921zZycAX/qI5EhwX8t8HU3HaCzt7gspbRNYZFf8TCqQw5THLDxkqE5Vxc3AkgWi1bm1/2bne7FOFvKtNfNsYIvbpqrHDlcCddr2fM95XpPg7ciKb+zq6dIBUcpZyeZfVYM4VFFv1Gsx+EkuWC2T4DTopRO0IqV6aOjd2/6X3X59w6A2uFHk67SuAetSTGucBIWxNuvIGVURNQfPuN5f3EgOVv+ECjAoJK3h0toyNVXTIvELtG0ofv5nnuQpHdEh0IurMh09mefzj2VnVWz/1IDvQXn/LuV/yKfkvTu/iepqXo8yOVUVpNoD7nOgj8pcYm5yek/a1snX61dQjp8dzdEOSQP+6HajOxzL7bclYpNdFpTclw6umuSsVMLj1nU7ey+Kz3PctCVSK0pip6tmh6x+sVii8oYYsDsmGnwOYkIXmD1DSrSmOkDizJa4Dx8FTmC8UIsKM2gThMH3XWQ18q1qHHrWMLIjEn3UCo2xRy7ohp1o1cE+WgjFmN+syMjtifjCkU3vtjtApje2dQTkLChfvX/Q3OaXM0jTFdx4to5fisBxyOhvd+4fyIsz5rwPnDUxJrvOgpE0IGFj6yazGtwjgoL+GdQ== sanjit1998@gmail.com"
+  default     = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDVkd1j+gjw/2/sfkCmnpds7rCpc7/mJAw44Q7TXwrxySB+tOVtEV8VOEf91RYiJTG71Ga3dv9PkNaFHYTFv6MSJWG95/sI7jNaUc3MzHcXZPhg1se1+NB6EbX6u8CdcuE+6g6pzN13Mh/bhvkwb+jMEVPJcp2ZINy5x05QiszQeMHrHmJGtGDWc8t2T0aI65iinoQvY1zpT28zUUEtJDjBnyJpJ5mz99sQZpAqOa9UyUlNCBt9c/XgZvHCbUJEs3enLwqwkK6dmZixsik+ml3wX23ydO2u6uAW8grFgHg4ZnnhaeFABtGIILnGzVMmeea+cqqkqYGLl+4aln6J2fKPeR0mVVWtTuiGopZRpQwnst73B+0HEAiiTnxG+BVcLBf/OhYuERChrUUs5hpoxvOZ1hDSpU8SGHbhKmpR5iAS/825MiFWZYs9T6FOC9qqhuTdGOHLnroJb/lIaSkGjH7IJHmhxhnXgRTTqI9PKSgwgR7c1IXpTy1riWw1Hpqvsxd6NdQZDLtRWFBW7TaIqYY5b4WdaHXn8K7tpmbAFPi1nDpe7DXPg26OImx0JfDVNyj0KpHiKZyRIBb9u0U78tETcQo2/ukXE7vWnYJF6Isbtksnqvt5Zuf4ul4XekJH+OnGBmQirQg+7HRM3dbNa9GF90aT2g2KKrLoxkT+v8LkeQ== sanjit8991@outlook.com"
+  sensitive   = true
+}
+
+variable "db_admin_password" {
+  description = "The admin password for the MySQL server."
+  type        = string
   sensitive   = true
 }
