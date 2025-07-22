@@ -138,6 +138,8 @@ ssh adminuser@10.0.2.4
 3. **Infrastructure Testing**: Plan review and approval
 4. **Automated Deployment**: Safe infrastructure updates
 
+> **Note:** If you use the provided GitHub Actions workflow for CI/CD, you must set your own GitHub repository secrets for Azure credentials (`AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_SUBSCRIPTION_ID`, `AZURE_TENANT_ID`, and `AZURE_CREDENTIALS`). These secrets are not stored in the code and must be configured in your repository settings under **Settings > Secrets and variables > Actions**.
+
 ### **Environment Strategy**
 - **Development**: Feature testing
 - **Staging**: Pre-production validation
